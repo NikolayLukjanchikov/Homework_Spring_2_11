@@ -1,30 +1,25 @@
 package com.jd10.homework_2_11.services;
 
 import com.jd10.homework_2_11.model.Basket;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 @Service
-
 public class OrderServiceImpl implements OrderService {
-   public final Map<Basket, List<Integer>> orderBasket;
-
-    public OrderServiceImpl() {
-        this.orderBasket = new HashMap<>();
-    }
+    public Basket addB;
 
     @Override
     public void addGoods(List<Integer> goods) {
-        Basket basketToAdd = new Basket();
-        orderBasket.put(basketToAdd,goods) ;
+        addB = new Basket(goods);
     }
 
-    public Map<Basket, List<Integer>> getOrderBasket() {
-        return orderBasket;
+    @Override
+    public List<Integer> getOrderBasket() {
+        if (addB != null) {
+            return addB.getGoods();
+        }
+        return null;
     }
 }
