@@ -1,5 +1,6 @@
 package com.jd10.homework_2_11.model;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Basket {
@@ -10,6 +11,6 @@ public class Basket {
     }
 
     public List<Integer> getGoods() {
-        return goods;
+        return Collections.unmodifiableList(goods);
     }
 }
