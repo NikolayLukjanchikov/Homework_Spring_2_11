@@ -6,5 +6,4 @@ public interface OrderService {
     void addGoods(List<Integer> goods);
 
     List<Integer> getOrderBasket();
-
 }

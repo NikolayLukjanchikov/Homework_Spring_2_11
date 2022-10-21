@@ -2,27 +2,26 @@ package com.jd10.homework_2_11.services;
 
 import com.jd10.homework_2_11.model.Basket;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.annotation.SessionScope;
+
 
 import java.util.Collections;
 import java.util.List;
 
-
 @Service
-@SessionScope
 public class OrderServiceImpl implements OrderService {
-    public Basket addB;
+    private final Basket basket;
+
+    public OrderServiceImpl(Basket basket) {
+        this.basket = basket;
+    }
 
     @Override
     public void addGoods(List<Integer> goods) {
-        addB = new Basket(goods);
+        basket.setGoods(goods);
     }
 
     @Override
     public List<Integer> getOrderBasket() {
-        if (addB != null) {
-            return Collections.unmodifiableList(addB.getGoods());
-        }
-        return null;
+        return Collections.unmodifiableList(basket.getGoods());
     }
 }
